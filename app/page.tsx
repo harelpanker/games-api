@@ -1,7 +1,7 @@
 //https://rawg.io/@harel/apikey
 
 import Image from 'next/image';
-import TypographyH1 from './(ui)/TypographyH1';
+import TypographyH1 from '../components/typography/TypographyH1';
 
 type GameProps = {
   id: number;
@@ -14,6 +14,11 @@ const getGames = async (): Promise<GameProps[]> => {
   const response = await fetch(
     `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`
   );
+
+  if (!response.ok) throw new Error(response.statusText);
+
+  await new Promise((resolve) => setTimeout(resolve, 2000)); // simulate network delay
+
   const data = await response.json();
   return data.results;
 };
@@ -35,6 +40,7 @@ export default async function Home() {
                 alt={game.name}
                 src={game.background_image}
                 fill
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 className='object-cover w-full h-full transition duration-500 group-hover:scale-110'
               />
               {/* cover */}
