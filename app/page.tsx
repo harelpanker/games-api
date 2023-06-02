@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default async function Home() {
   const games = await getGames(
-    `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&page_size=12&page=2`
+    `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page_size=12&page=2`
   );
 
   return (
