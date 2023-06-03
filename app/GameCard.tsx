@@ -4,7 +4,8 @@ import Link from 'next/link';
 
 type GameCardProps = {
   game: {
-    id: string;
+    id: number;
+    slug: string;
     name: string;
     background_image: string;
     rating: number;
@@ -12,11 +13,11 @@ type GameCardProps = {
 };
 
 const GameCard: FC<GameCardProps> = ({ game }) => {
-  const { name, background_image, rating, id } = game;
+  const { name, background_image, rating, slug } = game;
 
   return (
     <li className='relative aspect-video overflow-hidden rounded text-slate-50 group'>
-      <Link href={`/games/${id}`} className='relative h-full w-full block'>
+      <Link href={`/games/${slug}`} className='relative h-full w-full block'>
         {/* image */}
         <Image
           alt={name}

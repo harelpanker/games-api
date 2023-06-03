@@ -3,7 +3,8 @@ type GameData = {
   next: string;
   previous: string;
   results: {
-    id: string;
+    id: number;
+    slug: string;
     name: string;
     background_image: string;
     rating: number;
