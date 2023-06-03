@@ -7,9 +7,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default async function Home() {
-  const games = await getGames(
-    `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page_size=12&page=2`
-  );
+  const url = `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&page_size=12&page=2`;
+  const games = await getGames(url);
 
   return (
     <main className='py-20 px-5'>

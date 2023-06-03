@@ -15,6 +15,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 type GameData = {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   rating: number;

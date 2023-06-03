@@ -3,7 +3,7 @@ type GameData = {
   next: string;
   previous: string;
   results: {
-    id: number;
+    id: string;
     name: string;
     background_image: string;
     rating: number;
@@ -12,8 +12,9 @@ type GameData = {
 
 export const getGames = async (url: string): Promise<GameData> => {
   const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) throw new Error(response.statusText);
-  const data = await response.json();
 
+  if (!response.ok) throw new Error(response.statusText);
+
+  const data = await response.json();
   return data;
 };
